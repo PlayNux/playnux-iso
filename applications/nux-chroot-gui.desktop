@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Nux Chroot
+Name[de]=Nux Chroot GUI
+Comment=GUI for nux-chroot
+Comment[de]=Eine GUI für chroot
+Categories=System;
+Icon=system-run
+TryExec=nux-chroot
+Exec=nux-chroot-gui

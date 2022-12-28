@@ -1,0 +1,133 @@
+#!/bin/bash
+
+# $1 last $2 next
+function cleardir
+{
+    rm -rf --one-file-system /var/cache/nux-tools/nux-chroots/buildiso/*
+}
+
+cleardir
+
+buildiso -i
+
+source /var/cache/nux-tools/nux-builds/.env
+
+if ! test -f /var/cache/nux-tools/nux-builds/iso/nux/dr460nized/$(date +%y%m%d)/*.iso; then
+    if ! buildiso -p dr460nized; then
+        echo "Dr460nized ISO building failed. Manual intervention required!" | apprise -vv "${TELEGRAM}" -t "ISO Build failed!"
+        echo "Dr460nized" >> /var/cache/nux-tools/rebuild_needed.log
+    fi
+fi
+
+cleardir
+
+if ! test -f /var/cache/nux-tools/nux-builds/iso/nux/dr460nized-gaming/$(date +%y%m%d)/*.iso; then
+    if ! buildiso -p dr460nized-gaming -f; then
+        echo "Dr460nized Gaming ISO building failed. Manual intervention required!" | apprise -vv "${TELEGRAM}" -t "ISO Build failed!"
+        echo "Dr460nized Gaming" >> /var/cache/nux-tools/rebuild_needed.log
+    fi
+fi
+
+cleardir
+
+if ! test -f /var/cache/nux-tools/nux-builds/iso/nux/xfce/$(date +%y%m%d)/*.iso; then
+    if ! buildiso -p xfce -k linux-lts; then
+        echo "XFCE ISO building failed. Manual intervention required!" | apprise -vv "${TELEGRAM}" -t "ISO Build failed!"
+        echo "XFCE" >> /var/cache/nux-tools/rebuild_needed.log
+    fi
+fi
+
+cleardir
+
+if ! test -f /var/cache/nux-tools/nux-builds/iso/nux/gnome/$(date +%y%m%d)/*.iso; then
+    if ! buildiso -p gnome; then
+        echo "GNOME ISO building failed. Manual intervention required!" | apprise -vv "${TELEGRAM}" -t "ISO Build failed!"
+        echo "GNOME" >> /var/cache/nux-tools/rebuild_needed.log
+    fi
+fi
+
+cleardir
+
+if ! test -f /var/cache/nux-tools/nux-builds/iso/nux/kde-lite/$(date +%y%m%d)/*.iso; then
+    if ! buildiso -p kde-lite; then
+        echo "KDE lite ISO building failed. Manual intervention required!" | apprise -vv "${TELEGRAM}" -t "ISO Build failed!"
+        echo "KDE lite" >> /var/cache/nux-tools/rebuild_needed.log
+    fi
+fi
+
+cleardir
+
+if ! test -f /var/cache/nux-tools/nux-builds/iso/nux/kde-git/$(date +%y%m%d)/*.iso; then
+    if ! buildiso -p kde-git; then
+        echo "KDE-git ISO building failed. Manual intervention required!" | apprise -vv "${TELEGRAM}" -t "ISO Build failed!"
+        echo "KDE-git" >> /var/cache/nux-tools/rebuild_needed.log
+    fi
+fi
+
+cleardir
+
+if ! test -f /var/cache/nux-tools/nux-builds/iso/nux/lxqt-kwin/$(date +%y%m%d)/*.iso; then
+    if ! buildiso -p lxqt-kwin; then
+        echo "LXQT-Kwin ISO building failed. Manual intervention required!" | apprise -vv "${TELEGRAM}" -t "ISO Build failed!"
+        echo "LXQT-Kwin" >> /var/cache/nux-tools/rebuild_needed.log
+    fi
+fi
+
+cleardir
+
+if ! test -f /var/cache/nux-tools/nux-builds/iso/nux/cinnamon/$(date +%y%m%d)/*.iso; then
+    if ! buildiso -p cinnamon; then
+        echo "Cinnamon ISO building failed. Manual intervention required!" | apprise -vv "${TELEGRAM}" -t "ISO Build failed!"
+        echo "Cinnamon" >> /var/cache/nux-tools/rebuild_needed.log
+    fi
+fi
+
+cleardir
+
+if ! test -f /var/cache/nux-tools/nux-builds/iso/nux/mate/$(date +%y%m%d)/*.iso; then
+    if ! buildiso -p mate; then
+        echo "MATE ISO building failed. Manual intervention required!" | apprise -vv "${TELEGRAM}" -t "ISO Build failed!"
+        echo "MATE" >> /var/cache/nux-tools/rebuild_needed.log
+    fi
+fi
+
+cleardir
+
+if ! test -f /var/cache/nux-tools/nux-builds/iso/nux/i3/$(date +%y%m%d)/*.iso; then
+    if ! buildiso -p i3; then
+        echo "i3 ISO building failed. Manual intervention required!" | apprise -vv "${TELEGRAM}" -t "ISO Build failed!"
+        echo "i3" >> /var/cache/nux-tools/rebuild_needed.log
+    fi
+fi
+
+cleardir
+
+if ! test -f /var/cache/nux-tools/nux-builds/iso/nux/sway/$(date +%y%m%d)/*.iso; then
+    if ! buildiso -p sway; then
+        echo "Sway ISO building failed. Manual intervention required!" | apprise -vv "${TELEGRAM}" -t "ISO Build failed!"
+        echo "Sway" >> /var/cache/nux-tools/rebuild_needed.log
+    fi
+fi
+
+cleardir
+
+if ! test -f /var/cache/nux-tools/nux-builds/iso/nux/wayfire/$(date +%y%m%d)/*.iso; then
+    if ! buildiso -p wayfire; then
+        echo "Wayfire ISO building failed. Manual intervention required!" | apprise -vv "${TELEGRAM}" -t "ISO Build failed!"
+        echo "Wayfire" >> /var/cache/nux-tools/rebuild_needed.log
+    fi
+fi
+
+cleardir
+
+if ! test -f /var/cache/nux-tools/nux-builds/iso/nux/qtile/$(date +%y%m%d)/*.iso; then
+    if ! buildiso -p qtile; then
+        echo "Qtile ISO building failed. Manual intervention required!" | apprise -vv "${TELEGRAM}" -t "ISO Build failed!"
+        echo "Qtile" >> /var/cache/nux-tools/rebuild_needed.log
+    fi
+fi
+
+cleardir
+
+exit
+
